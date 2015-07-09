@@ -7,7 +7,7 @@
     <authors>thocun</authors>
     <owners>nvt2106</owners>
     <licenseUrl>http://thocun.com</licenseUrl>
-    <projectUrl>http://thocun.com</projectUrl>
+    <projectUrl>https://github.com/Nvt2106/MagicalStorage</projectUrl>
     <iconUrl>http://thocun.com</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Store data object to many type of stores</description>
