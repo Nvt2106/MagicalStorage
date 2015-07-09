@@ -10,22 +10,52 @@ Store and retrieve data objects to/from many type of storages (including MSSQL, 
 
 # Getting Started
 Add nuget package to your project:
-<i>Install-Package MagicalStorage</i>
+<p><i>Install-Package MagicalStorage</i></p>
 
 Declare an entity:
+``` swift
 [EntityType]
 public class Person
 {
+    [Unique, Required]
     public string FirstName { get; set; }
+
+	[Unique, Required]
+    public string LastName { get; set; }
 }
 
+[EntityType]
+public class Classroom
+{
+    [Unique, Required]
+	public string ClassroomName { get; set; }
+
+	public virtual List<Person> People { get; set; }
+}
+```
+
 Create MSEntityContext instance:
-var context = new MSEntityContext(new InMemoryRepository(), typeof(Person));
+``` swift
+var context = new MSEntityContext(new MSSQLRepository(), typeof(Person), typeof(Classroom));
+```
 
 Save a person to storage:
-var person = new Person() { FirstName = "Adam" };
+``` swift
+var person = new Person()
+{
+	FirstName = "Adam",
+	LastName = "Smith"
+};
+var classroom = new Classroom()
+{
+    ClassroomName = "CLassA",
+	People = new List<Person>();
+};
+classroom.People.Add(person);
+
 List<MSError> errors = null;
-context.Save(person, out errors);
+context.Save(classroom, out errors); // Save both classroom and person
 if (errors != null) {
     // TODO: error handling here
 }
+```
