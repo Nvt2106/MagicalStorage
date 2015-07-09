@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MagicalStorage.Core
 {
+    /// <summary>
+    /// Store sorting information, including sort by which property name and which direction.
+    /// </summary>
     public class MSSortInfo
     {
         public string PropertyName { get; private set; }
